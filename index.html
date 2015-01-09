@@ -1,8 +1,9 @@
 
+JQuery and Bootstrap declaration : 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
-
+Form Declaration : 
 <form method="post" id="submit" name="submit">
   <div class="input-group form-group-lg">
       <input type="url" required class="form-control" placeholder="Put your URL to short here" name="url-text" id="url-text" class="form-control input-lg">
@@ -11,25 +12,28 @@
   </div>
   </div>
 </form>
+
+this is to show the shorten URL
 <div id="result"></div>
 
 
+JQuery Declaration for AJAX Action :
 
 $(document).ready(function(){
-	$("form#submit").submit(function() {
-	var urlToShort     = $('input#url-text').val();
-		$.ajax({
-			type: "POST",
-			url: "add_url.php",
-			data: "url="+ urlToShort,
-			success: function(info){
-				$('#result').html(info);
-			},
-			failed:function(){
+ $("form#submit").submit(function() {
+  var urlToShort     = $('input#url-text').val();
+    $.ajax({
+	type: "POST",
+		url: "short_url.php",
+		data: "url="+ urlToShort,
+		success: function(info){
+			$('#result').html(info);
+		},
+		failed:function(){
 
-			}
+		}
 			
-		});
-	return false;
+     });
+return false;
 	});
 });
